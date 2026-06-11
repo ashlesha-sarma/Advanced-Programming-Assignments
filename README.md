@@ -1,19 +1,40 @@
-Assignment 18: 
+Assignment 19: Simple Digital Counter & Theme Toggle App 
 
-Generally, handling external files is a common source of runtime errors. Files might be missing, or they might contain corrupted data. For this assignment, you will create a simple data utility class that reads an integer value from a text file, performs a calculation, and ensures all system resources are properly closed afterward—even if something goes wrong.
+Build a single-screen mobile application using React Native. The app functions as a digital counter that allows users to increment, decrement, and reset a number displayed on the screen. To make the app more interactive, it must also include a "Theme Toggle" button that switches the screen's background and text colors between a Light Mode and a Dark Mode.
 
-Your program needs to read a numeric score from a file, multiply it by 10, and return the result. If the file does not exist, the system must catch that error and notify the user with a specific message. If the file exists but contains letters instead of a number, the system must handle that invalid data format gracefully. Finally, you must write basic automated tests to verify that your calculation works and that bad inputs are handled correctly.
+This assignment focuses on your ability to set up a basic React Native environment, layout components cleanly using Flexbox, and manage UI changes dynamically using React's state management.
 
-Implementation Rules:
+Implementation Rules
 
-If choosing Java: Create a class named ScoreProcessor. Write a method public int processScoreFile(String filePath) that uses a try-catch-finally block (or a try-with-resources block) to open and read a file. Catch FileNotFoundException and NumberFormatException specifically, logging or printing a clear error message for each. Use the finally block to print a "File cleanup completed" message to the console. Write a JUnit 5 test suite with at least two test cases: one verifying a successful calculation with a valid file path, and one using assertThrows to check how the system reacts to a missing file.
+Core Layout: The application must use standard React Native components: View, Text, and TouchableOpacity (or Button). The counter UI should be perfectly centered on the screen.
 
-If choosing Python: Create a class named ScoreProcessor. Write a method def process_score_file(self, file_path: str) -> int that uses a try-except-else-finally block to open and read a file. Catch FileNotFoundError and ValueError specifically, printing a helpful error message for each. Use the else block to print "Data processed successfully", and use the finally block to print "File cleanup completed". Write a pytest suite with at least two test functions: one testing a successful calculation with a valid file, and one using with pytest.raises to verify that a missing file is handled correctly.
+State Management: Use the useState hook to manage two pieces of state: the current counter value (integer) and the active theme mode (boolean or string).
 
-You must have the followings:
+Counter Logic: * The counter should start at 0.
 
-Exception Handling & Structure: Correctly implementing the multi-catch structure (FileNotFound and Invalid Format/Value errors) and ensuring the cleanup block executes under all conditions.
+The "Increment" button must increase the count by 1.
 
-Core Logic & Input Validation: Successfully reading the file content, parsing the text into a usable integer, and executing the required multiplication calculation.
+The "Decrement" button must decrease the count by 1, but it should never let the counter go below 0 (prevent negative numbers).
 
-Unit Testing: Setting up a working test suite that uses correct framework assertions to validate both the happy path (successful calculation) and the error path (missing file).
+The "Reset" button must bring the count back to 0.
+
+Dynamic Styling: * Light Mode (Default): White background with dark text.
+
+Dark Mode: Dark gray/black background with white text.
+
+Clicking the "Toggle Theme" button should instantly swap these styles across the entire screen.
+
+You must have the followings: 
+1. UI Layout & Component Structure: Correctly structure the app using a parent container, a text display for the counter, and a clean arrangement of buttons using Flexbox (e.g., placing the increment/decrement buttons side-by-side). 
+Use proper React Native style properties (flex, justifyContent, alignItems, fontSize, padding).
+
+2. Counter State & Validation Logic: Successfully implement the useState hook to track and dynamically display the counter value. Implement the increase, decrease, and reset functions correctly. 
+Constraint Check: Add an internal conditional check to ensure that clicking decrement at 0 does nothing, keeping the app safe from negative values.
+
+3. Dynamic Theme Toggling: Implement state tracking for the theme (e.g., isDarkMode). Use conditional styling or ternary operators within your style objects to alter the backgroundColor of the main container and the color of the text components based on the theme state.
+
+4. Code Cleanliness & Best Practices: Maintain well-organized code with proper component separation or readable inline styling. Use meaningful variable and function names (e.g., handleIncrement, toggleTheme). 
+
+Ensure no obvious runtime crashes occur during interactions.
+
+Those who are having android mobile must run it in the mobile in development mode. Those having iphone may run in emulator of android studio.
