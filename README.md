@@ -1,34 +1,21 @@
-Assignment 8: 
-Develop a course enrollment dashboard in reactjs:
+Question 9: 
 
-You are building a React component that displays enrolled students.
+Design a banking system in Java with:
 
-Each student:
-{
-  id: number,
-  name: string,
-  enrolledCourses: Set<string>,
-  gpa: number
-}
+A base class Account containing private fields: accountNumber, ownerName, balance
+Provide getters/setters and at least two constructors (use constructor chaining)
+Implement deposit() and withdraw() with proper validation
+Add a display() method
 
-You must: 
+Extend it with:
 
-1. Maintain students in state.
+SavingsAccount (add interestRate, override display() and show interest)
+CurrentAccount (add overdraftLimit, restrict withdrawals accordingly)
 
-2. Implement the following features:
-a. Add new student
-b. Remove student by ID
-c. Display students sorted by GPA (descending)
-d. Display all unique courses across students
-e. Filter students enrolled in a specific course
+Your implementation should clearly show:
 
-3. Use the followings
-a. Use useState
-b. Use Map internally for id to student mapping
-c. Use Set for course uniqueness
-d. Use map, filter, and reduce
-e. Do not mutate state directly
-f. Use spread operator for updates
-g. Convert Set to array before rendering
-
-4. Compute time complexity of filtering students by course
+Proper encapsulation (no direct field access)
+Use of constructor overloading and chaining (this(...))
+Inheritance and method overriding (use @Override and super)
+Polymorphism by storing objects in an Account reference list and calling display()
+Basic validation/debugging (e.g., assert or exception for invalid operations)
