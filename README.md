@@ -1,15 +1,17 @@
-Assignment 13: In C, managing strings is a common source of buffer overflows and memory leaks. Implement a Dynamic String Buffer that automatically grows as needed.
+Assignment 14: Create a scenario where objects are "dead" but still have a reference count higher than zero, then force the Garbage Collector to clean them up. Do in python only. 
 
-Requirements:
+Implementation Steps:
 
-1. Create a StringBuffer struct containing a char *data, a size_t length, and a size_t capacity. 
+Create a Node class with a name and a link attribute.
 
-2. Write a function sb_init(size_t initial_capacity) that allocates the struct and the data buffer on the heap. Handle NULL returns from malloc.
+Create a Cycle: Instantiate Node A and Node B.
 
-3. Write sb_append(StringBuffer *sb, const char *str).
+Set A.link = B and B.link = A.
 
-4. If the new string exceeds current capacity, use realloc to double the capacity. Ensure you handle realloc safely (don't overwrite the original pointer if it returns NULL).
+Check References: Use sys.getrefcount() to show that both objects have multiple references.
 
-Write sb_free(StringBuffer *sb) which works as a destructor that frees both the internal data and the struct itself to prevent memory leaks.
+The "Deletion": Use del A and del B.
 
-Demonstrate the buffer growing at least twice and then free all memory.
+The Investigation: Use the gc module to show that these objects still exist in memory because of the cycle, even though you can no longer access them from your code.
+
+The Cleanup: Call gc.collect() and print the number of "unreachable" objects collected.
