@@ -1,31 +1,34 @@
-Assignment 7: 
-Develop an activity log analyzer in python:
+Assignment 8: 
+Develop a course enrollment dashboard in reactjs:
 
-You are given a list of activity records:
+You are building a React component that displays enrolled students.
+
+Each student:
 {
-    "user": str,              //roll numbers of students
-    "action": str,          //Online activities of students such as - apps, websites visited etc.
-    "duration": float   //screen time for each activity
+  id: number,
+  name: string,
+  enrolledCourses: Set<string>,
+  gpa: number
 }
 
-You must:
+You must: 
 
-1. Store data efficiently using python built-in containers.
+1. Maintain students in state.
 
-2. Implement the following:
-def total_time_per_user(logs: list[dict]) -> dict[str, float]
-def most_active_users(logs: list[dict], k: int) -> list[str]
-def unique_actions(logs: list[dict]) -> set[str]
+2. Implement the following features:
+a. Add new student
+b. Remove student by ID
+c. Display students sorted by GPA (descending)
+d. Display all unique courses across students
+e. Filter students enrolled in a specific course
 
-3. 
-a. Use dict, set, and list
-b. Use comprehensions where appropriate
-c. Use sorted() with key
-d. Avoid explicit loops where possible
-e. Use typing annotations
-f. Use defaultdict optionally
-f. Use reduce() to compute total activity time.
+3. Use the followings
+a. Use useState
+b. Use Map internally for id to student mapping
+c. Use Set for course uniqueness
+d. Use map, filter, and reduce
+e. Do not mutate state directly
+f. Use spread operator for updates
+g. Convert Set to array before rendering
 
-4. Perform complexity analysis:
-a. Time complexity for computing top K users
-b. Space complexity of storing intermediate results
+4. Compute time complexity of filtering students by course
