@@ -1,45 +1,27 @@
-Complexity Analysis
+Complexity Analysis for Activity Log Analyzer
 
-Question 1: Time complexity of computing course averages
+Question 1: Time Complexity for Computing Top K Users
 
-Method:`getAverageScorePerCourse(List<Student> students)`
-
-Let:
-S = number of students
-C_avg = average number of courses per student
-C_unique = number of unique courses
-
-The method goes through every student and then through all the courses of that student. For each course score, a HashMap operation is used to update the total score, which takes constant time on average.
-
-After processing all students, the program creates the final map of course averages.
-
-Time Complexity:
-O(S × C_avg)
-
-Space Complexity:
-O(C_unique) because we store course totals in a HashMap.
-
-Question 2: Complexity of sorting top N students
-
-Method: `getTopNStudents(List<Student> students, int n)`
+Function: `most_active_users(logs, k)`
 
 Let:
-S= number of students
-C_avg = average number of courses per student
-N= number of top students required
+n = number of log entries
+u= number of unique users
+k = number of top users required
 
-The method sorts all students based on their average scores. Sorting S students takes O(S log S) time. During sorting, the program calculates the average score of students, which requires checking all their courses.
+First, the function calculates the total time spent by each user by going through all log entries once. This takes O(n) time.
+Next, the users are sorted based on their total time. Sorting u users takes O(u log u) time.
+Finally, the program selects the top k users from the sorted list, which takes **O(k)** time.
 
-Because of this, each comparison takes O(C_avg) time.
+Overall Time Complexity:
+O(n + u log u)
 
-Time Complexity:
-O(S × C_avg × log S)
-After sorting, the program simply selects the top N students.
-Space Complexity:
-O(N) for storing the top students.
+Question 2: Space Complexity of Storing Intermediate Results
 
-Summary
-Computing course averages: O(S × C_avg)
-Sorting top N students: O(S × C_avg × log S)
-where S = number of students
-C_avg = average number of courses per student
+The program stores the total time of each user in a dictionary. Since one entry is stored for each unique user, this requires O(u) space.
+It also creates a sorted list of users which again stores u elements. The final result list stores only k users.
+
+Since k ≤ u, the total space used is mainly due to storing unique users.
+
+Overall Space Complexity:
+O(u)

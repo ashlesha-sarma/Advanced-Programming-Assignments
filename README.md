@@ -1,26 +1,31 @@
-Assignment 6: 
-Develop a student performance analyzer in Java. You are given a list of students of your batch. Each student has:
-id (int) //don't include CSB string
-name (String)
-courses (List<String>)
-scores (Map<String, Integer>) where key = course, value = marks
+Assignment 7: 
+Develop an activity log analyzer in python:
 
-Do:
-1. Store students using appropriate collections.
-2. Implement the following methods:
-List<Student> getTopNStudents(List<Student> students, int n);
-Map<String, Double> getAverageScorePerCourse(List<Student> students);
-Set<String> getAllUniqueCourses(List<Student> students);
+You are given a list of activity records:
+{
+    "user": str,              //roll numbers of students
+    "action": str,          //Online activities of students such as - apps, websites visited etc.
+    "duration": float   //screen time for each activity
+}
 
-Must use:
+You must:
 
-1. Use ArrayList, HashMap, and HashSet
-2. Use Streams for aggregation and filtering
-3. Sort students by average score (descending)
-4. Use Comparator
-5. Handle missing course scores using getOrDefault
-6. Ensure type safety using generics
+1. Store data efficiently using python built-in containers.
 
-Perform complexity analysis:
-1. What is the time complexity of computing course averages?
-2. What is the complexity of sorting top N students?
+2. Implement the following:
+def total_time_per_user(logs: list[dict]) -> dict[str, float]
+def most_active_users(logs: list[dict], k: int) -> list[str]
+def unique_actions(logs: list[dict]) -> set[str]
+
+3. 
+a. Use dict, set, and list
+b. Use comprehensions where appropriate
+c. Use sorted() with key
+d. Avoid explicit loops where possible
+e. Use typing annotations
+f. Use defaultdict optionally
+f. Use reduce() to compute total activity time.
+
+4. Perform complexity analysis:
+a. Time complexity for computing top K users
+b. Space complexity of storing intermediate results
