@@ -1,16 +1,19 @@
-Assignment 17: 
-Build a user onboarding validation module for a platform. Your objective is to create a core validation class that processes incoming application data—specifically a user's email address and age—and enforces strict business constraints before allowing a registration to complete.
+Assignment 18: 
 
-The system must ensure that the email string is neither null nor empty, and that it conforms to a standard email format matching the regular expression patterns outlined in the slides (containing a valid identifier, an @ symbol, and a domain name). Additionally, the system must enforce a strict age restriction where applicants must be at least 18 years old to create an account.
+Generally, handling external files is a common source of runtime errors. Files might be missing, or they might contain corrupted data. For this assignment, you will create a simple data utility class that reads an integer value from a text file, performs a calculation, and ensures all system resources are properly closed afterward—even if something goes wrong.
 
-Implementation Rules
-If choosing Java: You must implement a checked exception named InvalidEmailException and an unchecked (RuntimeException) exception named UnderageException. Create a RegistrationService class containing a method public boolean registerUser(String email, int age) throws InvalidEmailException. You must include an internal assert statement to guarantee that the inputs are not processed if the system context is invalid. Finally, write a JUnit 5 test suite named RegistrationServiceTest that uses a @BeforeEach setup method, validates successful registrations, and uses assertThrows to verify that both custom exceptions are thrown under incorrect conditions.
+Your program needs to read a numeric score from a file, multiply it by 10, and return the result. If the file does not exist, the system must catch that error and notify the user with a specific message. If the file exists but contains letters instead of a number, the system must handle that invalid data format gracefully. Finally, you must write basic automated tests to verify that your calculation works and that bad inputs are handled correctly.
 
-If choosing Python: You must implement a custom exception named InvalidEmailError and another named UnderageError, both inheriting from the appropriate built-in exception classes. Create a RegistrationService class containing a method def register_user(self, email: str, age: int) -> bool. Use an internal assert statement to verify basic state invariants. Finally, write a pytest suite using a shared @pytest.fixture for configuration, validating successful workflows, and utilizing pytest.raises to assert that your custom errors are raised appropriately during invalid inputs.
+Implementation Rules:
+
+If choosing Java: Create a class named ScoreProcessor. Write a method public int processScoreFile(String filePath) that uses a try-catch-finally block (or a try-with-resources block) to open and read a file. Catch FileNotFoundException and NumberFormatException specifically, logging or printing a clear error message for each. Use the finally block to print a "File cleanup completed" message to the console. Write a JUnit 5 test suite with at least two test cases: one verifying a successful calculation with a valid file path, and one using assertThrows to check how the system reacts to a missing file.
+
+If choosing Python: Create a class named ScoreProcessor. Write a method def process_score_file(self, file_path: str) -> int that uses a try-except-else-finally block to open and read a file. Catch FileNotFoundError and ValueError specifically, printing a helpful error message for each. Use the else block to print "Data processed successfully", and use the finally block to print "File cleanup completed". Write a pytest suite with at least two test functions: one testing a successful calculation with a valid file, and one using with pytest.raises to verify that a missing file is handled correctly.
 
 You must have the followings:
-Custom Exception Design: Correctly establishing checked vs. unchecked hierarchies (Java) or appropriate base class inheritance (Python) with descriptive, dynamic error messages.
 
-Core Service Validation: Implementing the regex parsing, age boundary checks, invariant assertions, and proper exception triggering.
+Exception Handling & Structure: Correctly implementing the multi-catch structure (FileNotFound and Invalid Format/Value errors) and ensuring the cleanup block executes under all conditions.
 
-Unit Testing Suite: Writing comprehensive test cases using the correct framework assertions, proper test lifecycle setup (fixtures/before-each), and targeted exception testing.
+Core Logic & Input Validation: Successfully reading the file content, parsing the text into a usable integer, and executing the required multiplication calculation.
+
+Unit Testing: Setting up a working test suite that uses correct framework assertions to validate both the happy path (successful calculation) and the error path (missing file).
