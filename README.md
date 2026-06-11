@@ -1,1 +1,1 @@
-Assignment 1: Write a C program to analyze time complexities in constant time, linear time and quadratic time. Increase the size of input to check the time consumed.
+Assignment 2: Write a c program for three different operations as stated in question 1 to analyze the space complexity.
