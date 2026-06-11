@@ -1,34 +1,15 @@
-Assignment 12: 
-Design a system in java/python for processing customer orders in an e-commerce platform. 
+Assignment 13: In C, managing strings is a common source of buffer overflows and memory leaks. Implement a Dynamic String Buffer that automatically grows as needed.
 
-An order system should support:
+Requirements:
 
-Multiple payment methods (Credit Card, UPI, Wallet, etc.)
-Multiple notification channels (Email, SMS, Push)
-Different order types (Regular Order, Discounted Order, Priority Order)
-Ability to store order data using different storage mechanisms (Database, File, etc.)
-Design Constraints (Must Apply SOLID Principles)
+1. Create a StringBuffer struct containing a char *data, a size_t length, and a size_t capacity. 
 
-Your design must satisfy the SOLID principles as follows:
+2. Write a function sb_init(size_t initial_capacity) that allocates the struct and the data buffer on the heap. Handle NULL returns from malloc.
 
-1. Single Responsibility Principle (SRP): Each class should have a single responsibility
-(e.g., order logic, payment processing, notification, storage should be separate)
+3. Write sb_append(StringBuffer *sb, const char *str).
 
-2. Open/Closed Principle (OCP): You should be able to add:
-New payment methods
-New notification types
-Without modifying existing classes
+4. If the new string exceeds current capacity, use realloc to double the capacity. Ensure you handle realloc safely (don't overwrite the original pointer if it returns NULL).
 
-3. Liskov Substitution Principle (LSP): All subclasses (e.g., payment types, order types) should work correctly when used through their base type, No subclass should break expected behavior
+Write sb_free(StringBuffer *sb) which works as a destructor that frees both the internal data and the struct itself to prevent memory leaks.
 
-4. Interface Segregation Principle (ISP): Avoid large interfaces, Design small, role-specific interfaces
-(e.g., don’t force all classes to implement unused methods)
-
-5. Dependency Inversion Principle (DIP): High-level classes (e.g., OrderService) must depend on abstractions, not concrete implementations, Use dependency injection.
-
-Your system should:
-
-Create an order,
-Process payment using a selected payment method,
-Send notification after successful order,
-Save order details using a storage mechanism;
+Demonstrate the buffer growing at least twice and then free all memory.
