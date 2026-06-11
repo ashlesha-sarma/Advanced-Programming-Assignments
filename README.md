@@ -1,19 +1,34 @@
-Question 11: 
+Assignment 12: 
+Design a system in java/python for processing customer orders in an e-commerce platform. 
 
-Design a library system in Java or Python with:
+An order system should support:
 
-A base/abstract class LibraryItem (common fields like title, year)
-An abstract/common method displayInfo()
+Multiple payment methods (Credit Card, UPI, Wallet, etc.)
+Multiple notification channels (Email, SMS, Push)
+Different order types (Regular Order, Discounted Order, Priority Order)
+Ability to store order data using different storage mechanisms (Database, File, etc.)
+Design Constraints (Must Apply SOLID Principles)
 
-Create subclasses such as:
+Your design must satisfy the SOLID principles as follows:
 
-Book (add author)
-DVD (add duration/genre)
+1. Single Responsibility Principle (SRP): Each class should have a single responsibility
+(e.g., order logic, payment processing, notification, storage should be separate)
 
-Your implementation should clearly show:
+2. Open/Closed Principle (OCP): You should be able to add:
+New payment methods
+New notification types
+Without modifying existing classes
 
-Use of abstraction (common structure in base class)
-Method overriding in subclasses
-Polymorphism using a collection of LibraryItem objects
-One additional feature:
-constructor overloading / default arguments OR class/static counter
+3. Liskov Substitution Principle (LSP): All subclasses (e.g., payment types, order types) should work correctly when used through their base type, No subclass should break expected behavior
+
+4. Interface Segregation Principle (ISP): Avoid large interfaces, Design small, role-specific interfaces
+(e.g., don’t force all classes to implement unused methods)
+
+5. Dependency Inversion Principle (DIP): High-level classes (e.g., OrderService) must depend on abstractions, not concrete implementations, Use dependency injection.
+
+Your system should:
+
+Create an order,
+Process payment using a selected payment method,
+Send notification after successful order,
+Save order details using a storage mechanism;
