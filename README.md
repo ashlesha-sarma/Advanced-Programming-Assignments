@@ -1,19 +1,19 @@
-Question 10: 
+Question 11: 
 
-Design a student system in Python with:
+Design a library system in Java or Python with:
 
-Address class (street, city, zipCode)
-Student class with name, age, Address, and course list
-Store age as a protected attribute and control it using @property
-Methods: add_course() and display()
+A base/abstract class LibraryItem (common fields like title, year)
+An abstract/common method displayInfo()
 
-Extend it with:
+Create subclasses such as:
 
-ScholarshipStudent (add scholarshipAmount and override display())
+Book (add author)
+DVD (add duration/genre)
 
 Your implementation should clearly show:
 
-Composition (Student HAS-A Address)
-Proper data validation using @property (age must be valid)
-Inheritance and overriding (use super() in display)
-Understanding of mutable behavior (course list updates persist)
+Use of abstraction (common structure in base class)
+Method overriding in subclasses
+Polymorphism using a collection of LibraryItem objects
+One additional feature:
+constructor overloading / default arguments OR class/static counter
