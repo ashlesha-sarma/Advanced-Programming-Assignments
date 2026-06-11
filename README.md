@@ -1,2 +1,2 @@
-Assignment 3: Write a Java program using ArrayList to store book titles.
-Add at least 5 books and search for books whose title contains a given word
+Assignment 4: Create a Python program using a list and dictionary to store products with name and stock quantity.
+Display all products whose stock is less than 10.
