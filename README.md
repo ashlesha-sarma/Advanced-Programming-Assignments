@@ -1,12 +1,5 @@
 # Advanced Programming Assignments
 
-This repository contains solutions for the **Advanced Programming** assignments.
-
-Each assignment is maintained in a separate Git branch as required. The corresponding branch contains:
-
-* Assignment question (in README.md)
-* Source code
-
 ## Assignment Index
 
 | Assignment    | Branch         |
